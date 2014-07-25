@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ 	xmlns:ui="http://java.sun.com/jsf/facelets"
+ 	xmlns:f="http://java.sun.com/jsf/core"
+ 	xmlns:h="http://java.sun.com/jsf/html"
+ 	xmlns:pf="http://primefaces.org/ui"
+ 	xmlns:pf2 = "http://xmlns.jcp.org/jsf/passthrough"
+ 	template="/resources/decorator.xhtml">
+ 	
+ 	<ui:define name="title">Bem Vindo</ui:define>
+ 	<ui:define name="contents">
+ 		<h1>REgistration</h1>
+ 		<p>Fill in your data to become a guest at Java Hostel</p>
+ 		<h:form id="regForm">
+ 			<p>Name: <h:inputText id="name" value="#{registrationController.guest.name}" size="30" /></p>	
+ 			
+ 			<pf:inputText value="#{registrationController.guest.name}" pf2:placeholder="Nome"/>
+ 		
+ 		</h:form>
+ 	</ui:define>
+</ui:composition>

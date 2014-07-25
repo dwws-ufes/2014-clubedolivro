@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="icon" href="../../favicon.ico" />
+
+  <title>Clube do Livro</title><!-- Bootstrap core CSS -->
+  <link href="#{facesContext.externalContext.requestContextPath}/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" /><!-- Custom styles for this template -->
+  <link href="#{facesContext.externalContext.requestContextPath}/resources/css/offcanvas.css" rel="stylesheet" type="text/css" /><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+  <script src="#{facesContext.externalContext.requestContextPath}/resources/js/ie-emulation-modes-warning.js" type="text/javascript">
+  </script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+  <script src="#{facesContext.externalContext.requestContextPath}/resources/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+  </script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</h:head>
+
+<h:body>
+  <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span></button> <a class="navbar-brand" href="#" style="color: #fff">CLUBE DO LIVRO</a>
+      </div>
+
+      <div class="collapse navbar-collapse">
+	<ul class="nav navbar-nav">
+	  <li class="active"><a href="#">Home</a></li>
+
+	  <li><a href="#about">Sobre nós</a></li>
+
+	  <li><a href="#contact">Top Mais</a></li>
+	</ul>
+
+	<form class="navbar-form navbar-right" role="search">
+	  <div class="form-group">
+	    <input type="text" class="form-control" placeholder="Search" />
+	    <button type="button" class="btn btn-primary temTooltip" data-toggle="tooltip" data-placement="bottom" title="Pesquisar">
+	      <span class="glyphicon glyphicon-search"></span>
+	    </button>
+	    <button type="submit" class="btn btn-success">Login</button>
+	  </div>
+	  
+	</form>
+	
+      </div><!-- /.nav-collapse -->
+    </div><!-- /.container -->
+  </div><!-- /.navbar -->
+
+  <div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+      <div class="col-xs-12 col-sm-9">
+	<p class="pull-right visible-xs"><button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button></p>
+
+	<div class="jumbotron" style="background-image: url('#{facesContext.externalContext.requestContextPath}/resources/img/teste1.jpg');">
+	  <h1 style="color: #FFF; text-shadow: 6px 5px 5px #000;">O Mundo das Resenhas!</h1>
+
+	  <p style="text-align: center; color: #777; background: #FFF; font-weight: 400">Aqui você encontrará diversas resenhas dos mais variados livros e poderá adicionar sua própria resenha, ajudando assim, muitos leitores a escolherem uma boa leitura. Aproveite esse mundo de resenhas e embarque você também nessa aventura que a leitura nos proporciona!</p>
+	</div>
+
+	<div class="row">
+	  <div class="col-6 col-sm-6 col-lg-4">
+	    <h2>O Homem dos 7...</h2>
+	    <h6 style="color: #808080">Pedro Pereira Lopes </h6>
+
+	    <p>O Homem dos 7 Cabelos, Prémio Lusofonia Moçambique – 2010, foi um dos finalistas do “Prémio Conto Infantil – Matilde Rosa Araújo ”, Município de Trofa, Portugal. A obra foi selecionada como o melhor conto...</p>
+
+	    <p><a class="btn btn-primary" href="#" role="button">Ver detalhes &#187;</a></p>
+	  </div><!--/span-->
+
+	  <div class="col-6 col-sm-6 col-lg-4">
+	    <h2>Sete</h2>
+	    <h6 style="color: #808080">Patrick Raymundo de Moraes </h6>
+	    
+	    <p>Sete, um número, uma marca, uma revelação. As verdades e os sentimentos, o poder de escrever os segredos do coração, as aflições da alma, os porquês da nossa existência. Um livro que é puro sinônimo e tradução...</p>
+
+	    <p><a class="btn btn-primary" href="#" role="button">Ver detalhes &#187;</a></p>
+	  </div><!--/span-->
+
+	  <div class="col-6 col-sm-6 col-lg-4">
+	    <h2>Macbeth</h2>
+	    <h6 style="color: #808080">William Shakespeare </h6>
+	    
+	    <p>The play concerns a trusted general who secretly lusts for power. Encouraged by the prophecies of three witches and urged on by his ambitious wife Macbeth commits regicide. Left fearful and superstitious by this...</p>
+
+	    <p><a class="btn btn-primary" href="#" role="button">Ver detalhes &#187;</a></p>
+	  </div><!--/span-->
+</div>
+<div class="row">
+	  <div class="col-6 col-sm-6 col-lg-4">
+	    <h2>Rapture</h2>
+	    <h6 style="color: #808080">Lauren Kate </h6>
+
+	    <p>O céu está escuro com asas... Como areia numa ampulheta, o tempo está se esgotando para Luce e Daniel. Para parar Lúcifer de apagar o passado eles devem encontrar o lugar onde os anjos caíram na terra. Forças das...</p>
+
+	    <p><a class="btn btn-primary" href="#" role="button">Ver detalhes &#187;</a></p>
+	  </div><!--/span-->
+
+	  <div class="col-6 col-sm-6 col-lg-4">
+	    <h2>Divina Commedia</h2>
+	    <h6 style="color: #808080">Dante Alighieri </h6>
+
+	    <p>An epic Italian poem written between 1308 and 1321, The Divine Comedy was considered to be a prominent piece during its time and is regarded as one of the masterpieces of world literature. This poem focuses on the...</p>
+
+	    <p><a class="btn btn-primary" href="#" role="button">Ver detalhes &#187;</a></p>
+	  </div><!--/span-->
+
+	  <div class="col-6 col-sm-6 col-lg-4">
+	    <h2>Harry Potter an...</h2>
+	    <h6 style="color: #808080">J. K. Rowling </h6>
+
+	    <p>Rescued from the outrageous neglect of his aunt and uncle, a young boy with a great destiny proves his worth while attending Hogwarts School for Witchcraft and Wizardry.</p>
+
+	    <p><a class="btn btn-primary" href="#" role="button">Ver detalhes &#187;</a></p>
+	  </div><!--/span-->
+	</div><!--/row-->
+      </div><!--/span-->
+
+      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+	<div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Categorias</h3>
+            </div>
+            <div class="panel-body" style="padding: 0px">
+              <div class="list-group" style="margin: 0px;">
+		<a href="#" class="list-group-item">Ação</a>
+		<a href="#" class="list-group-item">Aventura</a>
+		<a href="#" class="list-group-item">Drama</a>
+		<a href="#" class="list-group-item">Fantasia</a>
+		<a href="#" class="list-group-item">Ficção</a>
+		<a href="#" class="list-group-item">Romance</a>
+		<a href="#" class="list-group-item">Suspense</a>
+		<a href="#" class="list-group-item">Terror</a>
+	      </div>
+            </div>
+          </div>
+      </div><!--/span-->
+      
+      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+	<div class="panel panel-primary">
+	  
+            <div class="panel-heading">
+		<h3 class="panel-title">TOP MAIS</h3>
+            </div>
+            <div class="panel-body" style="padding: 0px">
+              <div class="list-group" style="margin: 0px;">
+		<a href="#" class="list-group-item">Mais Favoritos</a>
+		<a href="#" class="list-group-item">Mais Lidos</a>
+		<a href="#" class="list-group-item">Mais Estou Lendo</a>
+		<a href="#" class="list-group-item">Mais Vou Ler</a>
+		<a href="#" class="list-group-item">Mais Abandonados</a>
+	      </div>
+            </div>
+          </div>
+	
+      </div><!--/span-->
+    </div><!--/row-->
+    <hr />
+
+    <footer>
+      <p>&#169; Company 2014</p>
+    </footer>
+  </div><!--/.container-->
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+  <script src="#{facesContext.externalContext.requestContextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="#{facesContext.externalContext.requestContextPath}/resources/js/offcanvas.js" type="text/javascript"></script>
+  <script>$('.temTooltip').tooltip()</script>
+</h:body>
+</html>
