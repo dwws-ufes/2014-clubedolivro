@@ -1,4 +1,9 @@
 clubedolivro
 ============
 
-Trabalho realizado na discplina Desenvolvimento Web Web Semantica 
+Trabalho realizado na disciplina Desenvolvimento Web Web Semântica por:
+    
+    * Glaice Kelly da Silva Quirino
+    * Wancharle Sebastião Quirino
+
+
