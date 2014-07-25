@@ -1,22 +1,65 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
  	xmlns:ui="http://java.sun.com/jsf/facelets"
  	xmlns:f="http://java.sun.com/jsf/core"
  	xmlns:h="http://java.sun.com/jsf/html"
  	xmlns:pf="http://primefaces.org/ui"
  	xmlns:pf2 = "http://xmlns.jcp.org/jsf/passthrough"
- 	template="/resources/decorator.xhtml">
+ 	template="/resources/BasicTemplate.xhtml">
  	
- 	<ui:define name="title">Bem Vindo</ui:define>
- 	<ui:define name="contents">
- 		<h1>REgistration</h1>
- 		<p>Fill in your data to become a guest at Java Hostel</p>
- 		<h:form id="regForm">
- 			<p>Name: <h:inputText id="name" value="#{registrationController.guest.name}" size="30" /></p>	
- 			
- 			<pf:inputText value="#{registrationController.guest.name}" pf2:placeholder="Nome"/>
- 		
- 		</h:form>
+ 	<ui:define name="conteudoInterno">
+        <div class="jumbotron" style="background-image: url('#{facesContext.externalContext.requestContextPath}/resources/img/teste1.jpg');">
+ 			<h1 style="color: #FFF; text-shadow: 6px 5px 5px #000;">O Mundo das Resenhas!</h1>
+          	<p style="text-align: center; color: #777; background: #FFF; font-weight: 400">Aqui você encontrará diversas resenhas dos mais variados livros e poderá adicionar sua própria resenha, ajudando assim, muitos leitores a escolherem uma boa leitura. Aproveite esse mundo de resenhas e embarque você também nessa aventura que a leitura nos proporciona!</p>
+        </div>
+
+
+        <div class="row">
+            <div class="col-6 col-sm-6 col-lg-4">
+            <h2>O Homem dos 7...</h2>
+            <h6 style="color: #808080">Pedro Pereira Lopes </h6>
+            <p>O Homem dos 7 Cabelos, Prémio Lusofonia Moçambique – 2010, foi um dos finalistas do “Prémio Conto Infantil – Matilde Rosa Araújo ”, Município de Trofa, Portugal. A obra foi selecionada como o melhor conto...</p>
+            <p><a class="btn btn-primary" href="#" role="button">Ver detalhes &#187;</a></p>
+            </div><!--/span-->
+
+            <div class="col-6 col-sm-6 col-lg-4">
+            <h2>Sete</h2>
+            <h6 style="color: #808080">Patrick Raymundo de Moraes </h6>
+            <p>Sete, um número, uma marca, uma revelação. As verdades e os sentimentos, o poder de escrever os segredos do coração, as aflições da alma, os porquês da nossa existência. Um livro que é puro sinônimo e tradução...</p>
+            <p><a class="btn btn-primary" href="#" role="button">Ver detalhes &#187;</a></p>
+            </div><!--/span-->
+
+            <div class="col-6 col-sm-6 col-lg-4">
+            <h2>Macbeth</h2>
+            <h6 style="color: #808080">William Shakespeare </h6>
+            <p>The play concerns a trusted general who secretly lusts for power. Encouraged by the prophecies of three witches and urged on by his ambitious wife Macbeth commits regicide. Left fearful and superstitious by this...</p>
+            <p><a class="btn btn-primary" href="#" role="button">Ver detalhes &#187;</a></p>
+            </div><!--/span-->
+        </div>
+        
+        <div class="row">
+            <div class="col-6 col-sm-6 col-lg-4">
+            <h2>Rapture</h2>
+            <h6 style="color: #808080">Lauren Kate </h6>
+            <p>O céu está escuro com asas... Como areia numa ampulheta, o tempo está se esgotando para Luce e Daniel. Para parar Lúcifer de apagar o passado eles devem encontrar o lugar onde os anjos caíram na terra. Forças das...</p>
+            <p><a class="btn btn-primary" href="#" role="button">Ver detalhes &#187;</a></p>
+            </div><!--/span-->
+
+            <div class="col-6 col-sm-6 col-lg-4">
+            <h2>Divina Commedia</h2>
+            <h6 style="color: #808080">Dante Alighieri </h6>
+            <p>An epic Italian poem written between 1308 and 1321, The Divine Comedy was considered to be a prominent piece during its time and is regarded as one of the masterpieces of world literature. This poem focuses on the...</p>
+            <p><a class="btn btn-primary" href="#" role="button">Ver detalhes &#187;</a></p>
+            </div><!--/span-->
+
+            <div class="col-6 col-sm-6 col-lg-4">
+            <h2>Harry Potter an...</h2>
+            <h6 style="color: #808080">J. K. Rowling </h6>
+            <p>Rescued from the outrageous neglect of his aunt and uncle, a young boy with a great destiny proves his worth while attending Hogwarts School for Witchcraft and Wizardry.</p>
+            <p><a class="btn btn-primary" href="#" role="button">Ver detalhes &#187;</a></p>
+            </div><!--/span-->
+        </div><!--/row-->
+
  	</ui:define>
+ 	
 </ui:composition>

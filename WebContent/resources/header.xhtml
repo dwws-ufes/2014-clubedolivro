@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+<body>
+
+	<ui:composition>
+        <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span></button> <a class="navbar-brand" href="#" style="color: #fff">CLUBE DO LIVRO</a>
+          </div>
+
+          <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+
+          <li><a href="#about">Sobre nós</a></li>
+
+          <li><a href="#contact">Top Mais</a></li>
+        </ul>
+
+        <h:form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search" />
+            <button type="button" class="btn btn-primary temTooltip" data-toggle="tooltip" data-placement="bottom" title="Pesquisar">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+            <h:commandButton type="submit" action="login.xhtml" class="btn btn-success" value="Login" />
+          </div>
+          
+        </h:form>
+        
+          </div><!-- /.nav-collapse -->
+        </div><!-- /.container -->
+      </div><!-- /.navbar -->
+	
+	</ui:composition>
+
+</body>
+</html>

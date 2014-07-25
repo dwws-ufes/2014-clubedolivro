@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pf="http://primefaces.org/ui"
+ 	xmlns:pf2 = "http://xmlns.jcp.org/jsf/passthrough"
+ 	template="/resources/BasicTemplate.xhtml">
+	
+	<ui:define name="conteudoInterno">
+
+    <div class="row" style="height: 500px; padding-top: 80px">
+	<div class="col-md-6">
+	    <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Já tenho cadastro</h3>
+            </div>
+            <div class="panel-body" style="padding: 20px">    
+		<h:form class="form-signin" role="form" id="loginForm">
+    	  <pf:messages  for="usuario"  />
+		  <pf:inputText type="text" id="usuario" class="form-control" style="margin-bottom: 10px" requiredMessage="Informe seu usuário!" pf2:placeholder="Usuário" required="true"  />
+    	  <pf:messages  for="senha"  />
+		  <pf:password  id="senha" class="form-control" pf2:placeholder="Senha" requiredMessage="Informe sua senha!" required="true" />
+		  <br />
+		  <h:commandButton  class="btn btn-lg btn-success btn-block" type="submit" value="Entrar" />
+		  
+		</h:form>
+	    </div>
+	</div>
+	</div>
+	
+	<div class="col-md-6">
+	
+	<div class="panel panel-success" style="size: 300px">
+            <div class="panel-heading">
+              <h3 class="panel-title">Não tenho cadastro</h3>
+            </div>
+            <div class="panel-body" style="padding: 20px;">    
+
+    	  <pf:messages id="messagesCadastro" for="cadForm" />
+		<h:form class="form-signin" role="form" id="cadForm">
+
+    	  <pf:messages  for="nome"  />
+		  <pf:inputText  id="nome" class="form-control" requiredMessage="Informe seu nome!" style="margin-bottom: 10px" placeholder="Nome" required="true" autofocus="true" />
+    	  <pf:messages  for="cadUsuario"  />
+		    <pf:inputText  id="cadUsuario" requiredMessage="Informe o usuário desejado!" class="form-control" style="margin-bottom: 10px" placeholder="Usuário" required="true" />
+		    <pf:inputTextarea id="cadDescricao"  class="form-control" style="margin-bottom: 10px"  rows="3" placeholder="Fale um pouco sobre você" />
+    	  <pf:messages  for="senha" />
+		  <pf:password class="form-control" requiredMessage="Informe sua senha!" id="senha" style="margin-bottom: 10px"  placeholder="Senha" required="true" />
+    	  <pf:messages  for="confirmaSenha"  />
+		    <pf:password class="form-control" id="confirmaSenha" requiredMessage="Confirme a sua senha!" placeholder="Confirme a senha" required="true" />
+		    <br/>
+		  <h:commandButton class="btn btn-lg btn-success btn-block" type="submit" value="Cadastrar" />
+		</h:form>
+	    </div>
+	</div>
+    </div>
+	    
+    </div><!--/row-->
+	</ui:define>
+</ui:composition>
