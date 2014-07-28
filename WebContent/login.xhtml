@@ -37,20 +37,20 @@
             </div>
             <div class="panel-body" style="padding: 20px;">    
 
-    	  <pf:messages id="messagesCadastro" for="cadForm" />
+    	  <pf:messages id="messagesCadastro" showDetail="true" for="cadForm" />
+    	  <h:outputText> </h:outputText>
 		<h:form class="form-signin" role="form" id="cadForm">
-
     	  <pf:messages  for="nome"  />
-		  <pf:inputText  id="nome" class="form-control" requiredMessage="Informe seu nome!" style="margin-bottom: 10px" placeholder="Nome" required="true" autofocus="true" />
+		  <pf:inputText  id="nome" value="#{addUsuario.usuario.nome}" class="form-control" requiredMessage="Informe seu nome!" style="margin-bottom: 10px" placeholder="Nome" required="true" autofocus="true" />
     	  <pf:messages  for="cadUsuario"  />
-		    <pf:inputText  id="cadUsuario" requiredMessage="Informe o usuário desejado!" class="form-control" style="margin-bottom: 10px" placeholder="Usuário" required="true" />
-		    <pf:inputTextarea id="cadDescricao"  class="form-control" style="margin-bottom: 10px"  rows="3" placeholder="Fale um pouco sobre você" />
+		    <pf:inputText  id="cadUsuario" value="#{addUsuario.usuario.usuario}" requiredMessage="Informe o usuário desejado!" class="form-control" style="margin-bottom: 10px" placeholder="Usuário" required="true" />
+		    <pf:inputTextarea id="cadDescricao" value='#{addUsuario.usuario.sobre}' class="form-control" style="margin-bottom: 10px"  rows="3" placeholder="Fale um pouco sobre você" />
     	  <pf:messages  for="senha" />
-		  <pf:password class="form-control" requiredMessage="Informe sua senha!" id="senha" style="margin-bottom: 10px"  placeholder="Senha" required="true" />
+		  <pf:password class="form-control" requiredMessage="Informe sua senha!" id="senha" value="#{addUsuario.usuario.password}" style="margin-bottom: 10px"  placeholder="Senha" required="true"/>
     	  <pf:messages  for="confirmaSenha"  />
-		    <pf:password class="form-control" id="confirmaSenha" requiredMessage="Confirme a sua senha!" placeholder="Confirme a senha" required="true" />
+		    <pf:password class="form-control" id="confirmaSenha" value="#{addUsuario.password2}" requiredMessage="Confirme a sua senha!" placeholder="Confirme a senha" required="true" />
 		    <br/>
-		  <h:commandButton class="btn btn-lg btn-success btn-block" type="submit" value="Cadastrar" />
+		  <h:commandButton class="btn btn-lg btn-success btn-block" action="#{addUsuario.add}" type="submit" value="Cadastrar" />
 		</h:form>
 	    </div>
 	</div>
