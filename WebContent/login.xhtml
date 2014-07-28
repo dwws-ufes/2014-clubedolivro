@@ -16,13 +16,16 @@
               <h3 class="panel-title">Já tenho cadastro</h3>
             </div>
             <div class="panel-body" style="padding: 20px">    
+
+    	  <pf:messages  for="loginForm" showDetail="true" />
+    	  
 		<h:form class="form-signin" role="form" id="loginForm">
     	  <pf:messages  for="usuario"  />
-		  <pf:inputText type="text" id="usuario" class="form-control" style="margin-bottom: 10px" requiredMessage="Informe seu usuário!" pf2:placeholder="Usuário" required="true"  />
+		  <pf:inputText type="text" id="usuario" value="#{sessao.login}" class="form-control" style="margin-bottom: 10px" requiredMessage="Informe seu usuário!" pf2:placeholder="Usuário" required="true"  />
     	  <pf:messages  for="senha"  />
-		  <pf:password  id="senha" class="form-control" pf2:placeholder="Senha" requiredMessage="Informe sua senha!" required="true" />
+		  <pf:password  id="senha" value="#{sessao.password}" class="form-control" pf2:placeholder="Senha" requiredMessage="Informe sua senha!" required="true" />
 		  <br />
-		  <h:commandButton  class="btn btn-lg btn-success btn-block" type="submit" value="Entrar" />
+		  <h:commandButton  class="btn btn-lg btn-success btn-block" action="#{sessao.login}" type="submit" value="Entrar" />
 		  
 		</h:form>
 	    </div>
