@@ -30,7 +30,11 @@ public class Sessao implements Serializable {
 		private String login;
 		private String password;
 
-
+		public String logout(){
+				usuarioLogado = null;
+                return "/index.faces?faces-redirect=true";
+			
+		}
 		public String login(){
 			usuarioLogado = usuarioDAO.findByLoginAndPassword(login, password);
 

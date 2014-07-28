@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html">
+
 <body>
 
 	<ui:composition>
@@ -27,7 +28,32 @@
             <button type="button" class="btn btn-primary temTooltip" data-toggle="tooltip" data-placement="bottom" title="Pesquisar">
               <span class="glyphicon glyphicon-search"></span>
             </button>
-            <h:commandButton type="submit" action="login.xhtml" class="btn btn-success" value="Login" />
+            			<ui:fragment rendered="#{sessao.usuarioLogado == null}">
+            				<button type='button'
+            				 onclick="location='#{facesContext.externalContext.requestContextPath}/login.faces'"
+            					 class="btn btn-success"
+            					value="Login" >Login</button>
+            			</ui:fragment>
+            			<ui:fragment rendered='#{sessao.usuarioLogado != null}'>
+            				<button type="button"
+                                 onclick="location='#{facesContext.externalContext.requestContextPath}/login.faces'"
+            					class="btn btn-info temTooltip" data-toggle="tooltip"
+            					data-placement="bottom" title="Visualizar perfil de #{sessao.usuarioLogado.getNome() }">
+            					<span
+            						class="glyphicon glyphicon-user">
+            					</span>
+            				</button>
+            				<button type="button"
+            					class="btn btn-info temTooltip" data-toggle="tooltip"
+            					data-placement="bottom" title="Sair" 
+            					onclick="$('input.hdnlogout').click();">
+            					<span
+            						class="glyphicon glyphicon-log-out">
+            					</span>
+            				</button>
+            				<h:commandButton id="hdnBtnlogout" class="hdnlogout" action="#{sessao.logout}" style="display:none;" />
+            			</ui:fragment>
+            		
           </div>
           
         </h:form>
