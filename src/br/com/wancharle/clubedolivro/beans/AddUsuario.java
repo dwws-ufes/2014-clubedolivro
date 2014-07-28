@@ -45,7 +45,7 @@ public class AddUsuario {
 			logger.log(Level.INFO, "Adicionando usuario: [nome= {0}; usuario = {1}; sobre = {2}; password = {3}]", new Object[] {usuario.getNome(), usuario.getUsuario(),
 					usuario.getSobre(),usuario.getPassword()});
 			usuarioDAO.save(usuario);
-			context.addMessage("cadForm", new FacesMessage(FacesMessage.SEVERITY_INFO,"Usuario cadastrado!","Usuario \"" + usuario.getNome() + "\" adicionado com sucesso!"));
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Usuario cadastrado!","Usuario \"" + usuario.getNome() + "\" adicionado com sucesso!"));
 			usuario = new Usuario(); // zera o usuario atual
 		}else{
 
@@ -55,6 +55,5 @@ public class AddUsuario {
 			password2="";
 		}
 		return null;
-		
 	}	
 }

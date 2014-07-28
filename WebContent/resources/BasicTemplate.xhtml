@@ -2,6 +2,7 @@
 <html lang="pt"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pf="http://primefaces.org/ui"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
   <meta charset="utf-8" />
@@ -39,6 +40,8 @@
 
       		<div class="col-xs-12 col-sm-9">
 		<p class="pull-right visible-xs"><button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button></p>
+
+    	  <pf:messages id="mensagensGerais" showDetail="true" />
           		<ui:insert name="conteudoInterno">
             		<ui:include src="/resources/conteudoInterno.xhtml"></ui:include>
 		  		</ui:insert> 
