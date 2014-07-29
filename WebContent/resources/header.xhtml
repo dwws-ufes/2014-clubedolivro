@@ -2,7 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:pf="http://primefaces.org/ui"
+ 	xmlns:pf2 = "http://xmlns.jcp.org/jsf/passthrough">
+ 
 
 <body>
 
@@ -24,10 +27,12 @@
 
         <h:form class="navbar-form navbar-right" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search" />
-            <button type="button" class="btn btn-primary temTooltip" data-toggle="tooltip" data-placement="bottom" title="Pesquisar">
+            <pf:inputText type="text" class="form-control" id="busca" value="#{search.texto}" pf2:placeholder="Search" />
+            <button type="button"  onclick="$('input.hdnbusca').click();" class="btn btn-primary temTooltip" data-toggle="tooltip" data-placement="bottom" title="Pesquisar">
               <span class="glyphicon glyphicon-search"></span>
             </button>
+            				<h:commandButton id="hdnBtnbusca" class="hdnbusca" action="#{search.busca}" style="display:none;" />
+
             			<ui:fragment rendered="#{sessao.usuarioLogado == null}">
             				<button type='button'
             				 onclick="location='#{facesContext.externalContext.requestContextPath}/login.faces'"
@@ -36,15 +41,14 @@
             			</ui:fragment>
             			<ui:fragment rendered='#{sessao.usuarioLogado != null}'>
             				<button type="button"
-                                 onclick="location='#{facesContext.externalContext.requestContextPath}/login.faces'"
+   								onclick="location='#{facesContext.externalContext.requestContextPath}/perfil.faces'"
             					class="btn btn-info temTooltip" data-toggle="tooltip"
             					data-placement="bottom" title="Visualizar perfil de #{sessao.usuarioLogado.getNome() }">
             					<span
             						class="glyphicon glyphicon-user">
             					</span>
             				</button>
-            				<button type="button"
-            					class="btn btn-info temTooltip" data-toggle="tooltip"
+            				<button type="button" class="btn btn-info temTooltip" data-toggle="tooltip"
             					data-placement="bottom" title="Sair" 
             					onclick="$('input.hdnlogout').click();">
             					<span

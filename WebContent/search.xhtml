@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pf="http://primefaces.org/ui"
+ 	xmlns:pf2 = "http://xmlns.jcp.org/jsf/passthrough"
+ 	template="/resources/BasicTemplate.xhtml">
+	
+	<ui:define name="conteudoInterno">
+
+ 		
+ 	<div class="row">
+	    
+          <h2 class="page-header" style="margin-top: 0px">Resultado da busca por 
+          <strong>"<h:outputText value="#{search.json.key.numFound}" />"</strong>
+          </h2>
+	  
+	  	  <p>Foram encontrados <strong><h:outputText value="#{search.totalEncontrado}" /></strong> resultados para a sua pesquisa.</p>
+
+        <pf:dataTable value="#{search.json.docs}" var="livro">
+           <pf:column headerText="Titulo">
+              <h:outputText value="#{livro.title}" />
+           </pf:column>
+           <pf:column headerText="Autor">
+               <h:outputText value="#{livro.author_name.get(0)}" />
+           </pf:column>
+        </pf:dataTable>
+       
+	</div>
+	</ui:define>
+</ui:composition>
