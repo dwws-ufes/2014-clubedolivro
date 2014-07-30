@@ -12,21 +12,24 @@
  		
  	<div class="row">
 	    
-          <h2 class="page-header" style="margin-top: 0px">Resultado da busca por 
-          <strong>"<h:outputText value="#{search.json.key.numFound}" />"</strong>
+          <h2 class="page-header" style="margin-top: 0px">Resultado da busca
+          <ui:fragment rendered="#{search.categoria == null}">
+          	por <strong>"<h:outputText value="#{search.texto}" />"</strong>
+          </ui:fragment>
+          <ui:fragment rendered="#{search.categoria !=null}">
+          	pela categoria <strong>"<h:outputText value="#{search.categoria}" />"</strong>
+          </ui:fragment>
           </h2>
-	  
-	  	  <p>Foram encontrados <strong><h:outputText value="#{search.totalEncontrado}" /></strong> resultados para a sua pesquisa.</p>
-
-        <pf:dataTable value="#{search.json.docs}" var="livro">
-           <pf:column headerText="Titulo">
-              <h:outputText value="#{livro.title}" />
+	  <h:form>
+        <pf:dataTable sortBy="#{livro.title}" paginator="true" paginatorPosition="bottom" rows="16" value="#{search.json.docs}" var="livro">
+           <pf:column headerText="Titulo" sortBy="#{livro.title}">
+              <h:commandLink action="#{search.view_livro(livro.key)}"><h:outputText value="#{livro.title}" /></h:commandLink>
            </pf:column>
-           <pf:column headerText="Autor">
+           <pf:column headerText="Autor" >
                <h:outputText value="#{livro.author_name.get(0)}" />
            </pf:column>
         </pf:dataTable>
-       
+       </h:form>
 	</div>
 	</ui:define>
 </ui:composition>

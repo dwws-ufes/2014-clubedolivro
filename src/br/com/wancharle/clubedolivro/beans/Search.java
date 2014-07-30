@@ -3,10 +3,11 @@ package br.com.wancharle.clubedolivro.beans;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.URL;
-import java.util.Map;
-import java.util.logging.Logger;
+import java.net.URLEncoder;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import org.apache.commons.io.IOUtils;
@@ -17,32 +18,48 @@ import org.json.simple.parser.ParseException;
 
 
 @Named
-@RequestScoped
+@SessionScoped
 public class Search implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private static final Logger logger = Logger.getLogger(AddUsuario.class.getCanonicalName());
 
     private String texto;
-    private Long totalEncontrado = (long) 0;
+    private String categoria;
+
     private JSONObject json; 
     private JSONArray livrosOpenlibre; 
 
-    public void buscaPorCategoria(String categoria){
-        String url = "https://openlibrary.org/search.json?subject="+ categoria;
+    public String busca() {
+    	if (texto.length()>2){
         try {
+        	String url = "https://openlibrary.org/search.json?limit=50&q="+ URLEncoder.encode(texto,"UTF-8");
             String genreJson = IOUtils.toString(new URL(url));
             json = (JSONObject) JSONValue.parseWithException(genreJson);
-        
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
+        }else{
+        	
+        	texto = "";
+        }
+    	return "/search.faces";
     }
-    public String busca(){
-    	buscaPorCategoria("popular");
-        return "/search.faces";
+ 
+    public String buscaPorCategoria(String categoria){
+    	if (categoria.length()>2){
+            setCategoria(categoria);
+            String url = "https://openlibrary.org/search.json?limit=50&subject="+ categoria;
+            try {
+                String genreJson = IOUtils.toString(new URL(url));
+                json = (JSONObject) JSONValue.parseWithException(genreJson);
+            
+            } catch (IOException | ParseException e) {
+                e.printStackTrace();
+            }
+         }
+    	return "/search.faces";
     }
-
+    
     public String getTexto() {
         return texto;
     }
@@ -51,13 +68,7 @@ public class Search implements Serializable {
         this.texto = texto;
     }
 
-	public Long getTotalEncontrado() {
-		return totalEncontrado;
-	}
 
-	public void setTotalEncontrado(Long totalEncontrado) {
-		this.totalEncontrado = totalEncontrado;
-	}
 
 	public JSONObject getJson() {
 		return json;
@@ -73,6 +84,14 @@ public class Search implements Serializable {
 
 	public void setLivrosOpenlibre(JSONArray livrosOpenlibre) {
 		this.livrosOpenlibre = livrosOpenlibre;
+	}
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 		
 
