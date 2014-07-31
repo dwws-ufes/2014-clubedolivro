@@ -22,11 +22,15 @@
           </h2>
 	  <h:form>
         <pf:dataTable sortBy="#{livro.title}" paginator="true" paginatorPosition="bottom" rows="16" value="#{search.json.docs}" var="livro">
+        
            <pf:column headerText="Titulo" sortBy="#{livro.title}">
-              <h:commandLink action="#{search.view_livro(livro.key)}"><h:outputText value="#{livro.title}" /></h:commandLink>
+              <h:commandLink action="#{livroPerfil.view(livro.edition_key.get(0),livro.author_name.get(0))}"><h:outputText value="#{livro.title}" /></h:commandLink>
            </pf:column>
            <pf:column headerText="Autor" >
                <h:outputText value="#{livro.author_name.get(0)}" />
+           </pf:column>
+           <pf:column headerText="Capa" style="width:100px;">
+				<img class="img-rounded" src="http://covers.openlibrary.org/b/olid/#{livro.edition_key.get(0)}-S.jpg"  alt="capa"/>
            </pf:column>
         </pf:dataTable>
        </h:form>

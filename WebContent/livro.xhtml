@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pf="http://primefaces.org/ui"
+ 	xmlns:pf2 = "http://xmlns.jcp.org/jsf/passthrough"
+ 	template="/resources/BasicTemplate.xhtml">
+	
+<ui:define name="conteudoInterno">
+
+	    
+	    
+ 
+          <h3 class="page-header" style="margin-top: 20px">#{livroPerfil.livro.title}</h3>
+	  <div class="row">
+	    <div class="col-md-9 col-md-push-3">
+		<p style="padding-top: 10px ">Escrito por <a href="http://openlibrary.orc/authors/#{livroPerfil.livro.autorKey}" target ="_blank" style="text-decoration: none; color: #333; font-weight: 500">#{livroPerfil.livro.autor}</a></p>
+		<p>Publicado em #{livroPerfil.livro.issued} por #{livroPerfil.livro.publisher}</p>
+		<p>Número de Páginas: #{livroPerfil.livro.numPaginas} </p>
+
+  	    <p>Openlibray ID: <a target="_blank" href="http://openlibrary.org/books/#{livroPerfil.livro.identificador}/">#{livroPerfil.livro.identificador}</a></p> 
+		
+		<h4 class="page-header" style="margin-top: 20px">Resenhas desse livro:</h4>
+		<div class="panel-group" id="accordion">
+		    <div class="panel panel-default">
+		      <div class="panel-heading">
+			<h5 class="panel-title">
+			  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+			    Título engracado - Autor Engracado
+			  </a>
+			</h5>
+		      </div>
+		      <div id="collapseOne" class="panel-collapse collapse in">
+			<div class="panel-body">
+			  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+			</div>
+		      </div>
+		    </div>
+		    <div class="panel panel-default">
+		      <div class="panel-heading">
+			<h5 class="panel-title">
+			  <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+			    Título dramatico - Autor dramatico
+			  </a>
+			</h5>
+		      </div>
+		      <div id="collapseTwo" class="panel-collapse collapse">
+			<div class="panel-body">
+			  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+			</div>
+		      </div>
+		    </div>
+		    <div class="panel panel-default">
+		      <div class="panel-heading">
+			<h5 class="panel-title">
+			  <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+			    Titulo ironico - autor ironico
+			  </a>
+			</h5>
+		      </div>
+		      <div id="collapseThree" class="panel-collapse collapse">
+			<div class="panel-body">
+			  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+			</div>
+		      </div>
+		    </div>
+		  </div>
+	    
+	    </div>
+	    <div class="col-md-3 col-md-pull-9">
+		<img class="img-rounded" src="http://covers.openlibrary.org/b/olid/#{livroPerfil.livro.identificador}-M.jpg" style="width: 180px; height: 210px; margin-bottom: 10px; margin-top: 5px; " alt="Generic placeholder thumbnail"/>
+		 
+		 <div class="checkbox">
+		    <label>
+		      <input type="checkbox" value=""/>
+		      É um dos meus livros favoritos!
+		    </label>
+		  </div>
+		  
+		  <div class="radio">
+		    <label>
+		      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"/>
+		      Já li
+		    </label>
+		  </div>
+		  <div class="radio">
+		    <label>
+		      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"/>
+		      Vou ler
+		    </label>
+		  </div>
+		  <div class="radio">
+		    <label>
+		      <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"/>
+		      Estou Lendo
+		    </label>
+		</div>
+		  <div class="radio">
+		    <label>
+		      <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"/>
+		      Abandonei
+		    </label>
+		</div>
+		  
+		<button type="button" class="btn btn-primary btn-sm">Salvar na minha estante</button> <!-- Para salvar, algum dos radios tem que estar selecionado. Se nao estiver logado, enviar para a pagina de login -->
+		<button type="button" class="btn btn-primary btn-sm" style="margin-top: 6px">Adicionar resenha</button>
+	    </div>
+	  </div>
+
+	  
+
+          
+	</ui:define>
+</ui:composition>

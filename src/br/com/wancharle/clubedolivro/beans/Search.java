@@ -22,7 +22,6 @@ import org.json.simple.parser.ParseException;
 public class Search implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-
     private String texto;
     private String categoria;
 
@@ -32,7 +31,7 @@ public class Search implements Serializable {
     public String busca() {
     	if (texto.length()>2){
         try {
-        	String url = "https://openlibrary.org/search.json?limit=50&q="+ URLEncoder.encode(texto,"UTF-8");
+        	String url = "https://openlibrary.org/search.json?has_fulltext=true&limit=50&q="+ URLEncoder.encode(texto,"UTF-8");
             String genreJson = IOUtils.toString(new URL(url));
             json = (JSONObject) JSONValue.parseWithException(genreJson);
         } catch (IOException | ParseException e) {
@@ -48,7 +47,7 @@ public class Search implements Serializable {
     public String buscaPorCategoria(String categoria){
     	if (categoria.length()>2){
             setCategoria(categoria);
-            String url = "https://openlibrary.org/search.json?limit=50&subject="+ categoria;
+            String url = "https://openlibrary.org/search.json?has_fulltext=true&limit=50&subject="+ categoria;
             try {
                 String genreJson = IOUtils.toString(new URL(url));
                 json = (JSONObject) JSONValue.parseWithException(genreJson);
