@@ -20,12 +20,13 @@ public class Livro implements Serializable {
 	@Column(nullable = false, unique = true)
 	private Long id;
 	private String identificador;
-	
-	
+		
 	private String title;
 	
 	private String autor;
 	private String autorKey;
+	
+	private Boolean fonteGutenberg;
 	
 	private String publisher;
 	private String issued;
@@ -91,5 +92,13 @@ public class Livro implements Serializable {
 		
 	public Long getId() {
 		return id;
+	}
+
+	public Boolean getFonteGutenberg() {
+		return fonteGutenberg;
+	}
+
+	public void setFonteGutenberg(Boolean fonteGutenberg) {
+		this.fonteGutenberg = fonteGutenberg;
 	}
 }

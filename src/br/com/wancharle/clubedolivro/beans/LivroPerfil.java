@@ -54,15 +54,18 @@ public class LivroPerfil {
 		
 	}	
 	private void getLivroJson(String key,String autor_do_work){
-		JSONObject json;
+        JSONObject json;
 
-            livro.setIdentificador(key);
-		try {
+        livro.setIdentificador(key);
+        livro.setFonteGutenberg(false);
+        
+        try {
 			String url = "https://openlibrary.org/books/"+ URLEncoder.encode(key,"UTF-8")+".json";
 			String rawJson = IOUtils.toString(new URL(url));
 			json = (JSONObject) JSONValue.parseWithException(rawJson);
 
             livro.setTitle((String)json.get("title"));
+            
             JSONObject autor;
 			JSONArray autores = (JSONArray) json.get("authors");
             if (autores != null)
@@ -87,10 +90,20 @@ public class LivroPerfil {
             livro.setIssued((String)json.get("publish_date"));
             livro.setPublisher((String)((JSONArray)json.get("publishers")).get(0));
             livro.setNumPaginas((Long) json.get("number_of_pages"));
+          
 		} catch (IOException | ParseException e) {
 			e.printStackTrace();
 		}
     }
+	public String view(Livro livro_escolhido){
+		Livro livro_existente = livroDAO.findByIdentificador(livro_escolhido.getIdentificador());
+		if (livro_existente != null){
+			livro = livro_existente;
+		}else{
+			livro = livro_escolhido;
+		}
+		return "/livro.faces";
+	}
 	public String view(String key, String autor){
 		Livro livro_existente = livroDAO.findByIdentificador(key);
 		if (livro_existente != null){
