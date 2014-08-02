@@ -1,13 +1,15 @@
 package br.com.wancharle.clubedolivro.domain;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Livro implements Serializable {
@@ -19,15 +21,15 @@ public class Livro implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false, unique = true)
 	private Long id;
-	private String identificador;
-		
-	private String title;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="livro" )
+	private Set<Leitura> leituras;
+		
+	private String identificador;
+	private String title;
 	private String autor;
 	private String autorKey;
-	
 	private Boolean fonteGutenberg;
-	
 	private String publisher;
 	private String issued;
 	private Long numPaginas;
@@ -100,5 +102,13 @@ public class Livro implements Serializable {
 
 	public void setFonteGutenberg(Boolean fonteGutenberg) {
 		this.fonteGutenberg = fonteGutenberg;
+	}
+
+	public Set<Leitura> getLeituras() {
+		return leituras;
+	}
+
+	public void setLeituras(Set<Leitura> leituras) {
+		this.leituras = leituras;
 	}
 }

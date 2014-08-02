@@ -27,6 +27,7 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 
+import br.com.wancharle.clubedolivro.domain.Leitura;
 import br.com.wancharle.clubedolivro.domain.Livro;
 import br.com.wancharle.clubedolivro.persistence.LivroDAO;
 
@@ -39,7 +40,9 @@ public class LivroPerfil {
 
 	@EJB
 	private LivroDAO livroDAO;
+
 	private Livro livro = new Livro();
+	private Leitura leitura = new Leitura();
 	
 	private String getAutorName(String key){
 		try {
@@ -120,5 +123,11 @@ public class LivroPerfil {
 
 	public Livro getLivro() {
 		return livro;
+	}
+	public Leitura getLeitura() {
+		return leitura;
+	}
+	public void setLeitura(Leitura leitura) {
+		this.leitura = leitura;
 	}
 }

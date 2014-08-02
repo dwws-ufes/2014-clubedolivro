@@ -1,12 +1,15 @@
 package br.com.wancharle.clubedolivro.domain;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Usuario implements Serializable {
@@ -19,6 +22,9 @@ public class Usuario implements Serializable {
 	@Column(nullable = false, unique = true)
 	private Long id;
 	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="usuario")
+	private Set<Leitura> leituras;
+
 	private String nome;
 
 	private String usuario;
@@ -55,5 +61,11 @@ public class Usuario implements Serializable {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public Set<Leitura> getLeituras() {
+		return leituras;
+	}
+	public void setLeituras(Set<Leitura> leituras) {
+		this.leituras = leituras;
 	}
 }
