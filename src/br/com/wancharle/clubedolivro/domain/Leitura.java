@@ -8,8 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
+@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"livro_id" , "usuario_id"})})
 public class Leitura implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -24,12 +27,12 @@ public class Leitura implements Serializable {
 	private Usuario usuario;
 	
 	//Constants
-	public static final char VOU_LER = 'V';
-	public static final char ESTOU_LENDO = 'E';
-	public static final char JA_LI = 'J';
-	public static final char ABANDONEI = 'A';
+	public static final String VOU_LER = "V";
+	public static final String ESTOU_LENDO ="E";
+	public static final String JA_LI = "J";
+	public static final String  ABANDONEI = "A";
 	
-	private char situacao;
+	private String situacao;
 	
 	private Boolean favorita;	
 	
@@ -44,11 +47,11 @@ public class Leitura implements Serializable {
 		this.livro = livro;
 	}
 
-	public char getSituacao() {
+	public String getSituacao() {
 		return situacao;
 	}
 
-	public void setSituacao(char situacao) {
+	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
 
@@ -66,6 +69,14 @@ public class Leitura implements Serializable {
 
 	public void setResenha(String resenha) {
 		this.resenha = resenha;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	

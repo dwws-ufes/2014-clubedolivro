@@ -31,7 +31,14 @@
 		  </div>
 	   </div>
 	    <div class="col-md-9">
-		<p style="padding-top: 10px ">Escrito por <a href="http://openlibrary.orc/authors/#{livroPerfil.livro.autorKey}" target ="_blank" style="text-decoration: none; color: #333; font-weight: 500">#{livroPerfil.livro.autor}</a></p>
+		<p style="padding-top: 10px ">Escrito por
+		<ui:fragment rendered="#{livroPerfil.livro.fonteGutenberg == false}">
+	<a href="http://openlibrary.org#{livroPerfil.livro.autorKey}" target ="_blank" >#{livroPerfil.livro.autor}</a>
+	</ui:fragment> 
+		<ui:fragment rendered="#{livroPerfil.livro.fonteGutenberg == true}">
+#{livroPerfil.livro.autor}
+		</ui:fragment>
+	</p>
 		<p>Publicado em #{livroPerfil.livro.issued} por #{livroPerfil.livro.publisher}</p>
 		<ui:fragment rendered="#{livroPerfil.livro.fonteGutenberg == false}">
 		<p>Número de Páginas: #{livroPerfil.livro.numPaginas} </p>
@@ -41,7 +48,11 @@
 	</ui:fragment>
 	
 	<ui:fragment rendered="#{livroPerfil.livro.fonteGutenberg == true }">
-  	    <p>Gutenberg ID: <a target="_blank" href="#{livroPerfil.livro.identificador}">#{livroPerfil.livro.identificador}</a></p> 
+  	    <p>Gutenberg ID: <a target="_blank" href="#{livroPerfil.livro.identificador}">#{livroPerfil.livro.gutenbergId}</a>
+  	    , <a target="_blank" href="#{livroPerfil.livro.getHTMLUrl()}">Ler</a>
+  	    , <a target="_blank" href="#{livroPerfil.livro.getEPUBLUrl()}">Baixar</a>
+  	    
+  	    </p>
 	</ui:fragment>
 	
 	  
@@ -52,17 +63,17 @@
 	</style>	
 	<br />
 	<div class="rrr">
- <h:selectOneRadio styleClass="rrr" layout="lineDirection" id="situacao" value="#{livroPerfil.leitura.situacao}" >
+ <h:selectOneRadio styleClass="rrr" layout="lineDirection" id="situacao" required='true' value="#{livroPerfil.leitura.situacao}" >
 		      <f:selectItem style="margin-right:5px" itemValue="J" itemLabel="Já Li " />
-		      <f:selectItem itemValue="J" itemLabel="Vou Ler " itemLabelStyle="padding-right:10px" />
-		      <f:selectItem itemValue="J" itemLabel="Estou Lendo " />
-		      <f:selectItem itemValue="J" itemLabel="Abandonei " />
+		      <f:selectItem itemValue="V" itemLabel="Vou Ler " itemLabelStyle="padding-right:10px" />
+		      <f:selectItem itemValue="E" itemLabel="Estou Lendo " />
+		      <f:selectItem itemValue="A" itemLabel="Abandonei " />
 		 </h:selectOneRadio>
 	</div>
 <p> <pf:inputTextarea style="width:100%;height:100px;" id="resenha" value="#{livroPerfil.leitura.resenha}" placeholder="Minha Resenha"></pf:inputTextarea>
 </p>	<p>
 	
-	<button type="button" class="btn btn-primary btn-sm">Salvar na minha estante</button> <!-- Para salvar, algum dos radios tem que estar selecionado. Se nao estiver logado, enviar para a pagina de login -->
+	<h:commandButton action="#{livroPerfil.salvarNaEstante}" class="btn btn-primary btn-sm" value="Salvar na minha estante" /> <!-- Para salvar, algum dos radios tem que estar selecionado. Se nao estiver logado, enviar para a pagina de login -->
 	</p>
 	
 	</div>

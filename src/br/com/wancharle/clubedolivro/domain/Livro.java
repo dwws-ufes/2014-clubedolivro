@@ -111,4 +111,19 @@ public class Livro implements Serializable {
 	public void setLeituras(Set<Leitura> leituras) {
 		this.leituras = leituras;
 	}
+
+	public String getGutenbergId(){
+		// exemplo identificador gutenberg: http://www.gutenberg.org/feeds/catalog.rdf#etext33056
+		String parts[] = getIdentificador().split("#etext");
+		return parts[1];
+	}
+	public String getHTMLUrl(){
+		// exemplo url html http://www.gutenberg.org/files/14600/14600-h/14600-h.htm
+		String id = getGutenbergId();
+        return String.format("http://www.gutenberg.org/files/%s/%s-h/%s-h.html",id,id,id);
+	}
+	public String getEPUBUrl(){
+		String id = getGutenbergId();
+        return String.format("http://www.gutenberg.org/books/%s.epub",id);
+	}
 }

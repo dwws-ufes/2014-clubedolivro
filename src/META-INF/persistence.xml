@@ -5,8 +5,9 @@
 		<jta-data-source>java:/jboss/datasources/ClubeDoLivro</jta-data-source>
 		<class>br.com.wancharle.clubedolivro.domain.Usuario</class>
 		<class>br.com.wancharle.clubedolivro.domain.Livro</class>
+		<class>br.com.wancharle.clubedolivro.domain.Leitura</class>
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="create"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
 		</properties>
 	</persistence-unit>
 </persistence>

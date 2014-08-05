@@ -35,11 +35,13 @@
 
         <div class="panel-body" style="padding: 0px">
             <div class="list-group" style="margin: 0px;">
-                <a href="#" class="list-group-item">Mais Favoritos</a>
+            	<h:form>
+                <h:commandLink action="#{search.buscaSparqlGutenberg}" class="list-group-item">Mais Favoritos</h:commandLink>
                 <a href="#" class="list-group-item">Mais Lidos</a>
                 <a href="#" class="list-group-item">Mais Estou Lendo</a>
                 <a href="#" class="list-group-item">Mais Vou Ler</a>
                 <a href="#" class="list-group-item">Mais Abandonados</a>
+                </h:form>
             </div>
         </div>
     </div>
