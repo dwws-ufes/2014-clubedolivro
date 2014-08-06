@@ -43,10 +43,8 @@
 	</ui:fragment>
 	
 	<ui:fragment rendered="#{livroPerfil.livro.fonteGutenberg == true }">
-  	    <p>Gutenberg ID: <a target="_blank" href="#{livroPerfil.livro.identificador}">#{livroPerfil.livro.gutenbergId}</a>
-  	    , <a target="_blank" href="#{livroPerfil.livro.getHTMLUrl()}">Ler</a>
+  	    <p>Gutenberg ID: <a target="_blank" href="#{livroPerfil.livro.getHTMLUrl()}">Ler #{livroPerfil.livro.getGutenbergId()}</a>
   	    , <a target="_blank" href="#{livroPerfil.livro.getEPUBUrl()}">Baixar</a>
-  	    
   	    </p>
 	</ui:fragment>
 	

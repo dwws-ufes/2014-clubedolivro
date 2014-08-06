@@ -129,12 +129,13 @@ public class Livro implements Serializable {
 	public String getHTMLUrl(){
 		// exemplo url html http://www.gutenberg.org/files/14600/14600-h/14600-h.htm
 		String id = getGutenbergId();
-        return String.format("http://www.gutenberg.org/files/%s/%s-h/%s-h",id,id,id);
+        return String.format("http://www.gutenberg.org/ebooks/%s",id);
 	}
 	public String getEPUBUrl(){
 		String id = getGutenbergId();
-        return String.format("http://www.gutenberg.org/books/%s.epub",id);
+        return String.format("http://www.gutenberg.org/ebooks/%s.epub",id);
 	}
+	
 	public String getURLCapa(String path){
 		if (fonteGutenberg){
 			return path+"/resources/img/gutenberg.jpg";
