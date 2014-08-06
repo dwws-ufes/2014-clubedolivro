@@ -1,6 +1,8 @@
 package br.com.wancharle.clubedolivro.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -107,6 +109,13 @@ public class Livro implements Serializable {
 	public Set<Leitura> getLeituras() {
 		return leituras;
 	}
+	public List<Leitura> getLeiturasList(){
+		 Set<Leitura> ls = getLeituras();
+		 if (ls!= null)
+			 return new ArrayList<Leitura>(ls);
+		 else
+			 return null;
+	}
 
 	public void setLeituras(Set<Leitura> leituras) {
 		this.leituras = leituras;
@@ -120,7 +129,7 @@ public class Livro implements Serializable {
 	public String getHTMLUrl(){
 		// exemplo url html http://www.gutenberg.org/files/14600/14600-h/14600-h.htm
 		String id = getGutenbergId();
-        return String.format("http://www.gutenberg.org/files/%s/%s-h/%s-h.html",id,id,id);
+        return String.format("http://www.gutenberg.org/files/%s/%s-h/%s-h",id,id,id);
 	}
 	public String getEPUBUrl(){
 		String id = getGutenbergId();

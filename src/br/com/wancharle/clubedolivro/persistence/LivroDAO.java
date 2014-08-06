@@ -29,7 +29,7 @@ public class LivroDAO extends BaseJPADAO<Livro>{
 	
 	public Livro findByIdentificador(String login){
 		TypedQuery<Livro> query = em.createQuery(
-				"SELECT l FROM Livro l WHERE l.identificador = :identificador",
+				"SELECT l FROM Livro l JOIN FETCH l.leituras WHERE l.identificador = :identificador",
 				Livro.class);
 		query.setParameter("identificador",login);		
 		List<Livro> results = query.getResultList();
