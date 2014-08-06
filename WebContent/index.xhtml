@@ -15,7 +15,7 @@
 
 <h:form>
         <div class="row">
-        	<ui:repeat  var="leitura" value="#{topMais.ultimasResenhas(0,3)}">
+        	<ui:repeat  var="leitura" value="#{livroPerfil.ultimasResenhas(0,3)}">
         	
             <div class="col-6 col-sm-6 col-lg-4">
             <h2>#{leitura.livro.title}</h2>
@@ -26,7 +26,7 @@
         	</ui:repeat>
        </div>
         <div class="row">
-        	<ui:repeat  var="leitura" value="#{topMais.ultimasResenhas(3,6)}">
+        	<ui:repeat  var="leitura" value="#{livroPerfil.ultimasResenhas(3,6)}">
         	
             <div class="col-6 col-sm-6 col-lg-4">
             <h2>#{leitura.livro.title}</h2>

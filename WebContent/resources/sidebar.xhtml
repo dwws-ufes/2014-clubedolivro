@@ -8,7 +8,30 @@
 
 <ui:composition>
 	<ui:insert name="painel-lateral-1">
-        <div class="panel panel-primary">
+ 
+	</ui:insert>
+	
+	<ui:insert name="painel-lateral-2">
+<h:form>	
+	<ui:fragment rendered="#{sessao.usuarioLogado !=null}">
+	<div class="panel panel-primary">    
+            <div class="panel-heading">
+		<h3 class="panel-title">Livros</h3>
+            </div>
+            <div class="panel-body" style="padding: 0px">
+              <div class="list-group" style="margin: 0px;">
+		<h:commandLink action="#{perfil.favoritos}" class="list-group-item">Favoritos</h:commandLink>
+		<h:commandLink action="#{perfil.jaLi}" class="list-group-item">Lidos</h:commandLink>
+		<h:commandLink action="#{perfil.estouLendo}" class="list-group-item">Estou Lendo</h:commandLink>
+		<h:commandLink action="#{perfil.vouLer}" class="list-group-item">Vou Ler</h:commandLink>
+		<h:commandLink action="#{perfil.abandonei}" class="list-group-item">Abandonei</h:commandLink>
+	      </div>
+            </div>
+		  
+          </div>
+	</ui:fragment>
+      </h:form>
+	       <div class="panel panel-primary">
             <div class="panel-heading">
             <h3 class="panel-title">Categorias</h3>
             </div>
@@ -28,28 +51,7 @@
                 </div>
             </div>
         </div>
-	</ui:insert>
-	
-	<ui:insert name="painel-lateral-2">
-	
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-        <h3 class="panel-title">TOP MAIS</h3>
-        </div>
-
-        <div class="panel-body" style="padding: 0px">
-            <div class="list-group" style="margin: 0px;">
-            	<h:form>
-                <h:commandLink action="#{search.buscaSparqlGutenberg}" class="list-group-item">Mais Favoritos</h:commandLink>
-                <a href="#" class="list-group-item">Mais Lidos</a>
-                <a href="#" class="list-group-item">Mais Estou Lendo</a>
-                <a href="#" class="list-group-item">Mais Vou Ler</a>
-                <a href="#" class="list-group-item">Mais Abandonados</a>
-                </h:form>
-            </div>
-        </div>
-    </div>
-
+   
 	</ui:insert>
 </ui:composition>
 </html>

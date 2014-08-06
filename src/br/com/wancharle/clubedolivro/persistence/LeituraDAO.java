@@ -66,4 +66,5 @@ public class LeituraDAO extends BaseJPADAO<Leitura>{
 		query.setMaxResults(sup);		
 		return query.getResultList();
 	}
+ 
 }

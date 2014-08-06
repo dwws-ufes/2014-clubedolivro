@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.Conversation;
@@ -165,6 +166,9 @@ public class LivroPerfil implements Serializable {
 		}
 	}
 	
+	public List<Leitura> ultimasResenhas(int in, int out){
+		return leituraDAO.findUtilmasResenhas(in,out);
+	}
 	public Livro getLivro() {
 		return livro;
 	}

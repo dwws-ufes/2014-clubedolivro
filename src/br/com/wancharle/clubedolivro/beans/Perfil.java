@@ -31,29 +31,29 @@ public class Perfil implements Serializable{
 	public String vouLer(){
 		setSituacao("Livros que vou ler");
 		sessao.loadLeituras(Leitura.VOU_LER);	
-		return null;
+		return "/perfil.faces";
 	} 
 	
 	public String jaLi(){
 		sessao.loadLeituras(Leitura.JA_LI);	
 		setSituacao("Livros que já li");	
-		return null;
+		return "/perfil.faces";
 	} 
 	public String estouLendo(){
 		sessao.loadLeituras(Leitura.ESTOU_LENDO);	
 		setSituacao("Livros que estou lendo");	
-		return null;
+		return "/perfil.faces";
 	} 
     public String abandonei(){
 		sessao.loadLeituras(Leitura.ABANDONEI);	
 		setSituacao("Livros que abandonei");	
-		return null;
+		return "/perfil.faces";
 	} 
 
     public String favoritos(){
     	sessao.loadLeiturasFavoritas();
 		setSituacao("Meus Livros Favoritos");	
-		return null;
+		return "/perfil.faces";
 	} 
 
 	public String getSituacao() {
