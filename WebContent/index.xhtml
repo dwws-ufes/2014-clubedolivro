@@ -20,7 +20,7 @@
             <div class="col-6 col-sm-6 col-lg-4">
             <h2>#{leitura.livro.title}</h2>
             <h6 style="color: #808080">#{leitura.livro.autor}</h6>
-            <p>#{leitura.resenha}</p>
+            <p>#{leitura.getResenhaCurta()}</p>
             <p><h:commandLink class="btn btn-primary" action="#{livroPerfil.view(leitura.livro)}" role="button">Ver detalhes &#187;</h:commandLink></p>
             </div><!--/span-->
         	</ui:repeat>

@@ -80,7 +80,7 @@ public class Leitura implements Serializable {
 	}
 	
 	public String getResenhaCurta(){
-		return resenha.substring(0,Math.min(120, resenha.length()));
+		return resenha.substring(0,Math.min(200, resenha.length()));
 	}
 	
 	
