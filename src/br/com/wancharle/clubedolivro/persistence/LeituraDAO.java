@@ -50,6 +50,7 @@ public class LeituraDAO extends BaseJPADAO<Leitura>{
 		query.setParameter("user_id",user.getId());		
 		return query.getResultList();
 	}
+
 	public List<Leitura> findFavoritosByUser(Usuario user){
 		TypedQuery<Leitura> query = em.createQuery(
 				"SELECT l FROM Leitura l JOIN Fetch l.livro WHERE l.favorita = true and l.usuario.id= :user_id",
@@ -57,5 +58,12 @@ public class LeituraDAO extends BaseJPADAO<Leitura>{
 		query.setParameter("user_id",user.getId());		
 		return query.getResultList();
 	}
-	
+    public List<Leitura> findUtilmasResenhas(int inf, int sup ){
+		TypedQuery<Leitura> query = em.createQuery(
+				"SELECT l FROM Leitura l JOIN Fetch l.livro WHERE l.resenha like '__%' ",
+				Leitura.class);
+		query.setFirstResult(inf);		
+		query.setMaxResults(sup);		
+		return query.getResultList();
+	}
 }

@@ -79,6 +79,9 @@ public class Leitura implements Serializable {
 		this.usuario = usuario;
 	}
 	
+	public String getResenhaCurta(){
+		return resenha.substring(0,Math.min(120, resenha.length()));
+	}
 	
 	
 }
