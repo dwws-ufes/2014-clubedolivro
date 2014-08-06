@@ -8,7 +8,7 @@
  	template="/resources/BasicTemplate.xhtml">
 	
 <ui:define name="conteudoInterno">
-		<h:form>
+		<h:form acceptcharset="UTF-8">
 		
 	    
 	    
@@ -17,12 +17,7 @@
 	  <div class="row">
 	  
 	    <div class="col-md-3">
-	    <ui:fragment rendered="#{livroPerfil.livro.fonteGutenberg == false}">
-		<img class="img-rounded" src="http://covers.openlibrary.org/b/olid/#{livroPerfil.livro.identificador}-M.jpg" style="width: 180px; height: 210px; margin-bottom: 10px; margin-top: 5px; " />
-	    </ui:fragment>
-		   <ui:fragment rendered="#{livroPerfil.livro.fonteGutenberg == true}">
-		<img class="img-rounded" src="#{facesContext.externalContext.requestContextPath}/resources/img/gutenberg.jpg" style="width: 180px; height: 210px; margin-bottom: 10px; margin-top: 5px; " />
-	    </ui:fragment> 
+		<img class="img-rounded" src="#{livroPerfil.livro.getURLCapa(facesContext.externalContext.requestContextPath)}" style="width: 180px; height: 210px; margin-bottom: 10px; margin-top: 5px; " />
  <div class="checkbox">
 		    <label>
 		      <h:selectBooleanCheckbox value="#{livroPerfil.leitura.favorita}"/>
@@ -50,7 +45,7 @@
 	<ui:fragment rendered="#{livroPerfil.livro.fonteGutenberg == true }">
   	    <p>Gutenberg ID: <a target="_blank" href="#{livroPerfil.livro.identificador}">#{livroPerfil.livro.gutenbergId}</a>
   	    , <a target="_blank" href="#{livroPerfil.livro.getHTMLUrl()}">Ler</a>
-  	    , <a target="_blank" href="#{livroPerfil.livro.getEPUBLUrl()}">Baixar</a>
+  	    , <a target="_blank" href="#{livroPerfil.livro.getEPUBUrl()}">Baixar</a>
   	    
   	    </p>
 	</ui:fragment>
@@ -63,7 +58,7 @@
 	</style>	
 	<br />
 	<div class="rrr">
- <h:selectOneRadio styleClass="rrr" layout="lineDirection" id="situacao" required='true' value="#{livroPerfil.leitura.situacao}" >
+ <h:selectOneRadio styleClass="rrr" default="V" layout="lineDirection" id="situacao" required='true' value="#{livroPerfil.leitura.situacao}" >
 		      <f:selectItem style="margin-right:5px" itemValue="J" itemLabel="Já Li " />
 		      <f:selectItem itemValue="V" itemLabel="Vou Ler " itemLabelStyle="padding-right:10px" />
 		      <f:selectItem itemValue="E" itemLabel="Estou Lendo " />

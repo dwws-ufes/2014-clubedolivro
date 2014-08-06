@@ -3,18 +3,12 @@ package br.com.wancharle.clubedolivro.beans;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -25,13 +19,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
-import org.primefaces.json.JSONException;
-
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Property;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.Statement;
 
 import br.com.wancharle.clubedolivro.domain.Leitura;
 import br.com.wancharle.clubedolivro.domain.Livro;
@@ -45,7 +32,7 @@ import br.com.wancharle.clubedolivro.persistence.LivroDAO;
 public class LivroPerfil implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = Logger.getLogger(LivroPerfil.class.getCanonicalName());
+
 	@Inject
 	private Conversation conversation;
 	
@@ -63,13 +50,15 @@ public class LivroPerfil implements Serializable {
 	private Leitura leitura = new Leitura();
 	
 	public String begin() {
+		loadLeitura();
+		
 		if (conversation.isTransient()){
 			conversation.begin();
-	}else{
+		}else{
 			conversation.end();
 			conversation.begin();
 		}
-		return "/livro.xhtml";
+		return "/livro.faces";
 	}
 
 	private String getAutorName(String key){
@@ -94,7 +83,6 @@ public class LivroPerfil implements Serializable {
 			String url = "https://openlibrary.org/books/"+ URLEncoder.encode(key,"UTF-8")+".json";
 			String rawJson = IOUtils.toString(new URL(url));
 			json = (JSONObject) JSONValue.parseWithException(rawJson);
-
             getLivro().setTitle((String)json.get("title"));
             
             JSONObject autor;
@@ -127,35 +115,36 @@ public class LivroPerfil implements Serializable {
 		}
     }
 	private void loadLeitura(){
+		setLeitura(new Leitura());
 		Usuario user = sessao.getUsuarioLogado();
-		if (user !=null && livro!=null){
-			Leitura leitura_existente = leituraDAO.findByLivroUser(livro,user);
+		if (user !=null && getLivro()!=null){
+			Leitura leitura_existente = leituraDAO.findByLivroUser(getLivro(),user);
 			if (leitura_existente!= null)
 			{
-				leitura = leitura_existente;
+				setLeitura(leitura_existente);
 			}
 		}
 	}
-	public String view(Livro livro_escolhido){
+	
+	public String view(Livro livro_escolhido){	
 		Livro livro_existente = livroDAO.findByIdentificador(livro_escolhido.getIdentificador());
 		if (livro_existente != null){
 			setLivro(livro_existente);
-			loadLeitura();
 		}else{
-			setLivro(livro_escolhido);
-			livroDAO.save(getLivro());
+			setLivro(livroDAO.save(livro_escolhido));
 		}
 		return begin();
 	}
+	
 	public String view(String key, String autor){
 		Livro livro_existente = livroDAO.findByIdentificador(key);
 		if (livro_existente != null){
 			setLivro(livro_existente);
-		loadLeitura();	
 		}else{
+			setLivro(new Livro());
 			getLivro().setIdentificador(key);
 			getLivroJson(key,autor);
-			livroDAO.save(getLivro());
+			setLivro(livroDAO.save(getLivro()));
 		}
 		return begin();
 	}
@@ -166,22 +155,16 @@ public class LivroPerfil implements Serializable {
 			FacesContext context = FacesContext.getCurrentInstance();
 		    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
 						"Requer login", "É necessário está logado para adicionar uma resenha!"));
-
-			conversation.end();
 			return "/login.faces";
 		}else{
 			leitura.setUsuario(user);
 			leitura.setLivro(livro);
 			leituraDAO.save(leitura);
-			conversation.end();
-            return "/perfil.faces";
+			setLeitura(new Leitura());
+            return "/perfil.faces?faces-redirect=true";
 		}
 	}
 	
-	public String add() {
-		return null;
-	}	
-
 	public Livro getLivro() {
 		return livro;
 	}

@@ -1,8 +1,5 @@
 package br.com.wancharle.clubedolivro.beans;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 
@@ -17,7 +14,6 @@ import br.com.wancharle.clubedolivro.persistence.UsuarioDAO;
 @Named
 @RequestScoped
 public class AddUsuario {
-	private static final Logger logger = Logger.getLogger(AddUsuario.class.getCanonicalName());
 
 	@EJB
 	private UsuarioDAO usuarioDAO;
@@ -35,18 +31,12 @@ public class AddUsuario {
 			return usuario;
 	}
 	public String add() {
-		// TODO: Checar unique de usuario
 		FacesContext context = FacesContext.getCurrentInstance();
 		if (usuario.getPassword().compareTo(password2) == 0){
-			
-			logger.log(Level.INFO, "Adicionando usuario: [nome= {0}; usuario = {1}; sobre = {2}; password = {3}]", new Object[] {usuario.getNome(), usuario.getUsuario(),
-					usuario.getSobre(),usuario.getPassword()});
 			usuarioDAO.save(usuario);
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Usuario cadastrado!","Usuario \"" + usuario.getNome() + "\" adicionado com sucesso!"));
 			usuario = new Usuario(); // zera o usuario atual
 		}else{
-
-			logger.log(Level.SEVERE, "Não foi possivel adicionar USUARIO: senhas não conferem");
 			context.addMessage("cadForm", new FacesMessage(FacesMessage.SEVERITY_ERROR,"Ocorreu um erro no cadastro!", "Senhas não conferem!"));
 			usuario.setPassword("");
 			password2="";

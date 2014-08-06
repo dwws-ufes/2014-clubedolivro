@@ -42,4 +42,20 @@ public class LeituraDAO extends BaseJPADAO<Leitura>{
 			return results.get(0);
 	}
 	
+	public List<Leitura> findByUserSituacao(Usuario user, String situacao){
+		TypedQuery<Leitura> query = em.createQuery(
+				"SELECT l FROM Leitura l JOIN Fetch l.livro WHERE l.situacao= :situacao and l.usuario.id= :user_id",
+				Leitura.class);
+		query.setParameter("situacao",situacao);		
+		query.setParameter("user_id",user.getId());		
+		return query.getResultList();
+	}
+	public List<Leitura> findFavoritosByUser(Usuario user){
+		TypedQuery<Leitura> query = em.createQuery(
+				"SELECT l FROM Leitura l JOIN Fetch l.livro WHERE l.favorita = true and l.usuario.id= :user_id",
+				Leitura.class);
+		query.setParameter("user_id",user.getId());		
+		return query.getResultList();
+	}
+	
 }

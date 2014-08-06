@@ -7,27 +7,31 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <ui:composition>
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-        <h3 class="panel-title">Categorias</h3>
-        </div>
-		
-        <div class="panel-body" style="padding: 0px">
-            <div class="list-group" style="margin: 0px;">
-            	<h:form>
-                <h:commandLink action="#{search.buscaPorCategoria('ação')}" class="list-group-item">Ação</h:commandLink>
-                <h:commandLink action="#{search.buscaPorCategoria('aventura')}" class="list-group-item">Aventura</h:commandLink>
-                <h:commandLink action="#{search.buscaPorCategoria('drama')}" class="list-group-item">Drama</h:commandLink>
-                <h:commandLink action="#{search.buscaPorCategoria('fantasia')}" class="list-group-item">Fantasia</h:commandLink>
-                <h:commandLink action="#{search.buscaPorCategoria('ficção')}" class="list-group-item">Ficção</h:commandLink>
-                <h:commandLink action="#{search.buscaPorCategoria('romance')}" class="list-group-item">Romance</h:commandLink>
-                <h:commandLink action="#{search.buscaPorCategoria('suspense')}" class="list-group-item">Suspense</h:commandLink>
-                <h:commandLink action="#{search.buscaPorCategoria('terror')}" class="list-group-item">Terror</h:commandLink>
-                </h:form>
+	<ui:insert name="painel-lateral-1">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+            <h3 class="panel-title">Categorias</h3>
+            </div>
+            
+            <div class="panel-body" style="padding: 0px">
+                <div class="list-group" style="margin: 0px;">
+                    <h:form>
+                    <h:commandLink action="#{search.buscaPorCategoria('ação')}" class="list-group-item">Ação</h:commandLink>
+                    <h:commandLink action="#{search.buscaPorCategoria('aventura')}" class="list-group-item">Aventura</h:commandLink>
+                    <h:commandLink action="#{search.buscaPorCategoria('drama')}" class="list-group-item">Drama</h:commandLink>
+                    <h:commandLink action="#{search.buscaPorCategoria('fantasia')}" class="list-group-item">Fantasia</h:commandLink>
+                    <h:commandLink action="#{search.buscaPorCategoria('ficção')}" class="list-group-item">Ficção</h:commandLink>
+                    <h:commandLink action="#{search.buscaPorCategoria('romance')}" class="list-group-item">Romance</h:commandLink>
+                    <h:commandLink action="#{search.buscaPorCategoria('suspense')}" class="list-group-item">Suspense</h:commandLink>
+                    <h:commandLink action="#{search.buscaPorCategoria('terror')}" class="list-group-item">Terror</h:commandLink>
+                    </h:form>
+                </div>
             </div>
         </div>
-    </div>
-
+	</ui:insert>
+	
+	<ui:insert name="painel-lateral-2">
+	
     <div class="panel panel-primary">
         <div class="panel-heading">
         <h3 class="panel-title">TOP MAIS</h3>
@@ -46,5 +50,6 @@
         </div>
     </div>
 
+	</ui:insert>
 </ui:composition>
 </html>

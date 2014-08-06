@@ -6,6 +6,34 @@
 	xmlns:pf="http://primefaces.org/ui"
  	xmlns:pf2 = "http://xmlns.jcp.org/jsf/passthrough"
  	template="/resources/BasicTemplate.xhtml">
+	<ui:define name="painel-lateral-1">
+	<div class="panel panel-primary">
+	    <div class="panel-heading">
+			<h3 class="panel-title">Meu Perfil</h3>
+        </div>
+        <div class="panel-body" style="padding: 0px">
+	    	<h4 style="text-align: center">#{sessao.usuarioLogado.nome}</h4>
+	    	<p style="text-align: center">#{sessao.usuarioLogado.sobre}</p>	    
+	    </div>
+	</div>
+	<h:form>	
+	<div class="panel panel-primary">    
+            <div class="panel-heading">
+		<h3 class="panel-title">Livros</h3>
+            </div>
+            <div class="panel-body" style="padding: 0px">
+              <div class="list-group" style="margin: 0px;">
+		<h:commandLink action="#{perfil.favoritos}" class="list-group-item">Favoritos</h:commandLink>
+		<h:commandLink action="#{perfil.jaLi}" class="list-group-item">Lidos</h:commandLink>
+		<h:commandLink action="#{perfil.estouLendo}" class="list-group-item">Estou Lendo</h:commandLink>
+		<h:commandLink action="#{perfil.vouLer}" class="list-group-item">Vou Ler</h:commandLink>
+		<h:commandLink action="#{perfil.abandonei}" class="list-group-item">Abandonei</h:commandLink>
+	      </div>
+            </div>
+		  
+          </div>
+      </h:form>
+	</ui:define>
 	
 	<ui:define name="conteudoInterno">
 
@@ -14,62 +42,23 @@
 
 	  </div>
 
+          <h:form >
 	<div class="row">
-	    
-          <h1 class="page-header" style="margin-top: 0px">Meus Favoritos</h1>
-
+          <h1 class="page-header" style="margin-top: 0px">#{perfil.situacao}</h1>
           <div class="row">
-            <div class="col-md-2">
-              <a href="#"><img src="img/livro1.jpg" style="width: 110px; height: 150px; margin-bottom: 5px; margin-top: 5px;" alt="Generic placeholder thumbnail"/></a>
-              <span class="text-muted">O Hobbit</span>
-            </div>
-            <div class="col-md-2">
-              <a href="#"><img src="img/livro2.jpg" style="width: 110px; height: 150px; margin-bottom: 5px; margin-top: 5px;" alt="Generic placeholder thumbnail"/></a>
-              <span class="text-muted">Crepúsculo</span>
-            </div>
-            <div class="col-md-2">
-              <a href="#"><img src="img/livro3.jpg" style="width: 110px; height: 150px; margin-bottom: 5px; margin-top: 5px;" alt="Generic placeholder thumbnail"/></a>
-              <span class="text-muted">Amanhecer</span>
-            </div>
-            <div class="col-md-2">
-              <a href="#"><img src="img/livro4.jpg" style="width: 110px; height: 150px; margin-bottom: 5px; margin-top: 5px;" alt="Generic placeholder thumbnail"/></a>
-              <span class="text-muted">Lula do Brasil</span>
-            </div>
-	     <div class="col-md-2">
-              <a href="#"><img src="img/livro5.jpg" style="width: 110px; height: 150px; margin-bottom: 5px; margin-top: 5px;" alt="Generic placeholder thumbnail"/></a>
-              <span class="text-muted">Harry Potter e as Reliquias da Morte</span>
-            </div>
-	      <div class="col-md-2">	
-		<a href="#"><img src="img/livro6.jpg" style="width: 110px; height: 150px; margin-bottom: 5px; margin-top: 5px;" alt="Generic placeholder thumbnail"/></a>
-              <span class="text-muted">Harry Potter e a Ordem da Fenix</span>
-            </div>
-	       <div class="col-md-2">
-              <a href="#"><img src="img/livro7.jpg" style="width: 110px; height: 150px; margin-bottom: 5px; margin-top: 5px;" alt="Generic placeholder thumbnail"/></a>
-              <span class="text-muted">Morte Súbita</span>
-            </div>
-	        <div class="col-md-2">
-              <a href="#"><img src="img/livro8.jpg" style="width: 110px; height: 150px; margin-bottom: 5px; margin-top: 5px;" alt="Generic placeholder thumbnail"/></a>
-              <span class="text-muted">Fallen</span>
-            </div>
-		 <div class="col-md-2">
-              <a href="#"><img src="img/livro9.jpg" style="width: 110px; height: 150px; margin-bottom: 5px; margin-top: 5px;" alt="Generic placeholder thumbnail"/></a>
-              <span class="text-muted">A Tormenta de Espadas</span>
-            </div>
-		  <div class="col-md-2">
-              <a href="#"><img src="img/livro10.jpeg" style="width: 110px; height: 150px; margin-bottom: 5px; margin-top: 5px;" alt="Generic placeholder thumbnail"/></a>
-              <span class="text-muted">Novelas Nada Exemplares</span>
-            </div>
-		<div class="col-md-2">
-		    <a href="#"><img src="img/livro11.jpeg" style="width: 110px; height: 150px; margin-bottom: 5px; margin-top: 5px;" alt="Generic placeholder thumbnail"/></a>
-              <span class="text-muted">Só os Anjos Morrem Cedo</span>
-            </div>
-	    <div class="col-md-2">
-		<a href="#"><img src="img/livro12.jpg" style="width: 110px; height: 150px; margin-bottom: 5px; margin-top: 5px;" alt="Generic placeholder thumbnail"/></a>
-		<span class="text-muted">Jogos Vorazes</span>
-            </div>
+          	<ui:repeat var="leitura" value="#{sessao.leituras}">
+                <div class="col-md-2">
+
+                  <h:commandLink  action="#{livroPerfil.view(leitura.livro)}" >
+                  <img src="#{leitura.livro.getURLCapa(facesContext.externalContext.requestContextPath)}" style="width: 110px; height: 150px; margin-bottom: 5px; margin-top: 5px;" alt="Generic placeholder thumbnail"/>
+                  </h:commandLink>
+
+                  <span class="text-muted">#{leitura.livro.title}</span>
+                </div>
+          	</ui:repeat>
           </div>
-	    
-	    
 	</div><!--/row-->
+
+	    	</h:form>
 	</ui:define>
 </ui:composition>

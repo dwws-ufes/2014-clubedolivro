@@ -126,4 +126,16 @@ public class Livro implements Serializable {
 		String id = getGutenbergId();
         return String.format("http://www.gutenberg.org/books/%s.epub",id);
 	}
+	public String getURLCapa(String path){
+		if (fonteGutenberg){
+			return path+"/resources/img/gutenberg.jpg";
+		}
+		else{
+			return "http://covers.openlibrary.org/b/olid/"+identificador+"-M.jpg";
+		}
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 }

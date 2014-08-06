@@ -32,7 +32,7 @@ public class Leitura implements Serializable {
 	public static final String JA_LI = "J";
 	public static final String  ABANDONEI = "A";
 	
-	private String situacao;
+	private String situacao = VOU_LER;
 	
 	private Boolean favorita;	
 	
