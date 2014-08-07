@@ -30,15 +30,17 @@
 	<div class="row">
           <h1 class="page-header" style="margin-top: 0px">#{perfil.situacao}</h1>
           <div class="row">
-          	<ui:repeat var="leitura" value="#{sessao.leituras}">
+          	<ui:repeat var="leitura" value="#{sessao.leituras}" varStatus="loop">
                 <div class="col-md-2">
 
                   <h:commandLink  action="#{livroPerfil.view(leitura.livro)}" >
                   <img src="#{leitura.livro.getURLCapa(facesContext.externalContext.requestContextPath)}" style="width: 110px; height: 150px; margin-bottom: 5px; margin-top: 5px;" alt="Generic placeholder thumbnail"/>
                   </h:commandLink>
 
-                  <span class="text-muted">#{leitura.livro.title}</span>
+                  <span class="text-muted">#{leitura.livro.getTituloCurto()}</span>
                 </div>
+
+                    <h:outputText value="&lt;/div&gt; &lt;div class='row' &gt;" escape="false" rendered="#{(loop.index+1) % 6 == 0}" /> 
           	</ui:repeat>
           </div>
 	</div><!--/row-->

@@ -8,3 +8,5 @@ Trabalho realizado na disciplina Desenvolvimento Web Web Semântica por:
 * Wancharle Sebastião Quirino
 
 
+Um demostração do website pode ser visualizada em: [http://clubedolivro.wancharle.com.br/]
+

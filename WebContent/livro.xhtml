@@ -90,6 +90,7 @@
 		<h4 class="page-header" style="margin-top: 20px">Resenhas desse livro:</h4>
 		<div class="panel-group" id="accordion">
 			<ui:repeat var="leitura" value="#{livroPerfil.livro.leiturasList}">
+				<ui:fragment rendered="#{leitura.resenha.length()>4}">
 			    <div class="panel panel-default">
 				    <div class="panel-heading">
 							<h5 class="panel-title">
@@ -104,7 +105,7 @@
 						</div>
 		      		</div>
 		    	</div>
-
+</ui:fragment>
 			</ui:repeat>
 		 </div>
 	</div>

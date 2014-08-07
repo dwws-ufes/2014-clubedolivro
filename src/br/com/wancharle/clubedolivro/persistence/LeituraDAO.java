@@ -60,7 +60,7 @@ public class LeituraDAO extends BaseJPADAO<Leitura>{
 	}
     public List<Leitura> findUtilmasResenhas(int inf, int sup ){
 		TypedQuery<Leitura> query = em.createQuery(
-				"SELECT l FROM Leitura l JOIN Fetch l.livro WHERE l.resenha like '__%' ",
+				"SELECT l FROM Leitura l JOIN Fetch l.livro WHERE l.resenha like '__%' ORDER BY l.id DESC",
 				Leitura.class);
 		query.setFirstResult(inf);		
 		query.setMaxResults(sup);		

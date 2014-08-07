@@ -15,7 +15,7 @@
 
 <h:form>
         <div class="row">
-        	<ui:repeat  var="leitura" value="#{livroPerfil.ultimasResenhas(0,3)}">
+        	<ui:repeat  varStatus="loop" var="leitura" value="#{livroPerfil.ultimasResenhas(0,6)}">
         	
             <div class="col-6 col-sm-6 col-lg-4">
             <h2>#{leitura.livro.title}</h2>
@@ -23,19 +23,11 @@
             <p>#{leitura.getResenhaCurta()}</p>
             <p><h:commandLink class="btn btn-primary" action="#{livroPerfil.view(leitura.livro)}" role="button">Ver detalhes &#187;</h:commandLink></p>
             </div><!--/span-->
+
+                    <h:outputText value="&lt;/div&gt; &lt;div class='row' &gt;" escape="false" rendered="#{(loop.index+1) % 3 == 0}" /> 
         	</ui:repeat>
        </div>
-        <div class="row">
-        	<ui:repeat  var="leitura" value="#{livroPerfil.ultimasResenhas(3,6)}">
-        	
-            <div class="col-6 col-sm-6 col-lg-4">
-            <h2>#{leitura.livro.title}</h2>
-            <h6 style="color: #808080">#{leitura.livro.autor}</h6>
-            <p>#{leitura.getResenhaCurta()}</p>
-            <p><h:commandLink class="btn btn-primary" action="#{livroPerfil.view(leitura.livro)}" role="button">Ver detalhes &#187;</h:commandLink></p>
-            </div><!--/span-->
-        	</ui:repeat>
-       </div>
+     
         </h:form>
 
  	</ui:define>

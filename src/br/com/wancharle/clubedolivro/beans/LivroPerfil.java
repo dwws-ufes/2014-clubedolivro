@@ -108,7 +108,11 @@ public class LivroPerfil implements Serializable {
             }
             
             getLivro().setIssued((String)json.get("publish_date"));
-            getLivro().setPublisher((String)((JSONArray)json.get("publishers")).get(0));
+            JSONArray publishers = (JSONArray)json.get("publishers");
+            if (publishers != null)
+            	getLivro().setPublisher((String)publishers.get(0));
+            else
+            	getLivro().setPublisher("desconhecido");
             getLivro().setNumPaginas((Long) json.get("number_of_pages"));
           
 		} catch (IOException | ParseException e) {

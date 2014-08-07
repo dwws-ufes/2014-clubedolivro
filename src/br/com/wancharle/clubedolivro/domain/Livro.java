@@ -148,4 +148,10 @@ public class Livro implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	public String getTituloCurto(){
+		if (title.toString().length()>28)
+			return title.substring(0, 28)+"...";
+		else
+			return title;
+	}
 }
