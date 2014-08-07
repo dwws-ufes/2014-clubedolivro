@@ -28,6 +28,8 @@ public class Usuario implements Serializable {
 	private String nome;
 
 	private String usuario;
+	
+	@Column(columnDefinition="TEXT")
 	private String sobre;
 
 	private String password;
